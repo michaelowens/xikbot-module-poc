@@ -8,7 +8,7 @@ export default class BaseModule {
 
     enable () {
         for (var event in this.events) {
-            EventManager.addEvent(event, this.events[event])
+            EventManager.on(event, this.events[event])
         }
     }
 

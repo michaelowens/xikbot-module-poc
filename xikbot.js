@@ -4,11 +4,17 @@ import EventManager from './models/event'
 ModulesManager.load()
 
 // Pretend to receive a message and emit the event
-EventManager.emit('onMessage', {
-    message: 'This is a test message'
+EventManager.emit('message', {
+    message: 'This is a test message',
+    channel: {
+        name: 'xikeon'
+    }
 })
 
-EventManager.emit('onCommand:test', {
+EventManager.emit('command:test', {
     message: '!test my params',
-    params: ['my', 'params']
+    params: ['my', 'params'],
+    channel: {
+        name: 'xikeon'
+    }
 })
