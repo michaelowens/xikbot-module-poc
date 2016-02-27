@@ -8,8 +8,6 @@ export default class TestModule extends BaseModule {
     constructor () {
         super()
 
-        this.name = 'TestModule'
-
         // this.commands = Commands.rawCommand(this.test, {
         //     command: 'test',
         //     description: 'A test command'

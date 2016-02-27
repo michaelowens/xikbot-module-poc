@@ -2,7 +2,6 @@ import EventManager from '../models/event'
 
 export default class BaseModule {
     constructor () {
-        this.name = null
         this.commands = null
         this.events = {}
     }

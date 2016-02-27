@@ -9,22 +9,16 @@ class ModulesManager {
         this.modules = []
     }
 
-    load (reload = true) {
+    load () {
         this.modules = MODULES.map(module => new module)
 
-        if (reload) {
-            this.reload()
-        }
-    }
-
-    reload () {
         this.modules.forEach(function (module) {
             module.enable()
         })
     }
 
     get (moduleName) {
-        return this.modules.find(module => module.name === moduleName)
+        return this.modules.find(module => module.constructor.name === moduleName)
     }
 }
 
