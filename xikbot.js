@@ -1,20 +1,23 @@
 import ModulesManager from './models/module'
-import EventManager from './models/event'
+import Chat from './models/chat'
 
 ModulesManager.load()
+console.log('---- ENABLED MODULE')
 
 // Pretend to receive a message and emit the event
-EventManager.emit('message', {
-    message: 'This is a test message',
-    channel: {
-        name: 'xikeon'
-    }
-})
+Chat.handleMessage('This is a test message')
+Chat.handleMessage('!test add 1')
 
-EventManager.emit('command:test', {
-    message: '!test my params',
-    params: ['my', 'params'],
-    channel: {
-        name: 'xikeon'
-    }
-})
+ModulesManager.get('TestModule').disable()
+
+setTimeout(() => {
+    console.log('---- DISABLED MODULE')
+    Chat.handleMessage('This is a test message')
+    Chat.handleMessage('!test add 1')
+
+    ModulesManager.get('TestModule').enable()
+
+    console.log('---- ENABLED MODULE')
+    Chat.handleMessage('This is a test message')
+    Chat.handleMessage('!test remove 1')
+}, 1000)

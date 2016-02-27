@@ -4,8 +4,10 @@ export const MODULES = [
     TestModule
 ]
 
-let ModulesManager = {
-    modules: [],
+class ModulesManager {
+    constructor () {
+        this.modules = []
+    }
 
     load (reload = true) {
         this.modules = MODULES.map(module => new module)
@@ -13,13 +15,17 @@ let ModulesManager = {
         if (reload) {
             this.reload()
         }
-    },
+    }
 
     reload () {
         this.modules.forEach(function (module) {
             module.enable()
         })
     }
+
+    get (moduleName) {
+        return this.modules.find(module => module.name === moduleName)
+    }
 }
 
-export default ModulesManager
+export default new ModulesManager

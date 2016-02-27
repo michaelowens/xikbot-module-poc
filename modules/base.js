@@ -2,7 +2,8 @@ import EventManager from '../models/event'
 
 export default class BaseModule {
     constructor () {
-        this.commands = {}
+        this.name = null
+        this.commands = null
         this.events = {}
     }
 
@@ -10,7 +11,19 @@ export default class BaseModule {
         for (var event in this.events) {
             EventManager.on(event, this.events[event])
         }
+
+        if (this.commands) {
+            this.commands.enable()
+        }
     }
 
-    disable () {}
+    disable () {
+        for (var event in this.events) {
+            EventManager.removeListener(event, this.events[event])
+        }
+
+        if (this.commands) {
+            this.commands.disable()
+        }
+    }
 }
