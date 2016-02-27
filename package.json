@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules\\.bin\\mocha --compilers js:babel-core/register",
+    "coverage": "node_modules\\.bin\\babel-node node_modules\\isparta\\bin\\isparta cover --report html node_modules\\mocha\\bin\\_mocha -- --reporter dot"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-cli": "^6.5.1",
     "babel-plugin-syntax-async-functions": "6.5.0",
     "babel-plugin-transform-runtime": "6.5.2",
     "babel-polyfill": "^6.5.0",
@@ -18,5 +20,11 @@
     "babel-preset-stage-3": "6.5.0",
     "babel-register": "6.5.2",
     "babel-runtime": "6.5.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-spies": "^0.7.1",
+    "isparta": "^4.0.0",
+    "mocha": "^2.4.5"
   }
 }
