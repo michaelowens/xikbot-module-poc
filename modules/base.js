@@ -2,8 +2,17 @@ import EventManager from '../models/event'
 
 export default class BaseModule {
     constructor () {
+        this.enabled = false
         this.commands = null
         this.events = {}
+    }
+
+    isEnabled() {
+
+    }
+
+    isEnabledForChannel(channel) {
+        return true
     }
 
     enable () {
@@ -14,6 +23,8 @@ export default class BaseModule {
         if (this.commands) {
             this.commands.enable()
         }
+
+        this.enabled = true
     }
 
     disable () {
@@ -24,5 +35,7 @@ export default class BaseModule {
         if (this.commands) {
             this.commands.disable()
         }
+
+        this.enabled = false
     }
 }

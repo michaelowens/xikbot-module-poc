@@ -1,7 +1,9 @@
 import TestModule from '../modules/test'
+import AnotherModule from '../modules/another'
 
 export const MODULES = [
-    TestModule
+    TestModule,
+    AnotherModule
 ]
 
 class ModulesManager {

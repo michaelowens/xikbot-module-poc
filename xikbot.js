@@ -7,6 +7,7 @@ console.log('---- ENABLED MODULE')
 // Pretend to receive a message and emit the event
 Chat.handleMessage('This is a test message')
 Chat.handleMessage('!test add 1')
+Chat.handleMessage('!another one')
 
 ModulesManager.get('TestModule').disable()
 

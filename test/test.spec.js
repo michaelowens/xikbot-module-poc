@@ -23,12 +23,14 @@ describe('TestModule', () => {
     })
 
     it('should start disabled', () => {
+        expect(module.enabled).to.be.false
         expect(EventManager.listenerCount('message')).to.equal(0)
         expect(EventManager.listenerCount('command:test')).to.equal(0)
     })
 
-    it('should bind events', () => {
+    it('should bind events after enabling', () => {
         module.enable()
+        expect(module.enabled).to.be.true
         expect(EventManager.listenerCount('message')).to.equal(1)
         expect(EventManager.listenerCount('command:test')).to.equal(1)
     })
